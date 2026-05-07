@@ -38,8 +38,8 @@ export default function Navbar() {
           {/* Mobile menu toggle (Left side) */}
           <motion.button
             whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="md:hidden p-2 rounded-xl flex items-center justify-center transition-colors bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300 shadow-sm hover:bg-primary hover:text-white"
+            whileTap={{ scale: 0.9 }}
+            className="md:hidden p-2 rounded-xl flex items-center justify-center transition-all bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-300 shadow-sm hover:bg-primary hover:text-white active:bg-primary active:text-white"
             onClick={() => setIsOpen(true)}
           >
             <Menu size={24} />
@@ -74,9 +74,9 @@ export default function Navbar() {
           {/* Theme Toggle (Right side, Mobile & Desktop) */}
           <motion.button
             whileHover={{ rotate: 15 }}
-            whileTap={{ scale: 0.9 }}
+            whileTap={{ scale: 0.8, rotate: -15 }}
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-2 rounded-full transition-colors md:ml-auto bg-slate-100 dark:bg-slate-800 shadow-sm dark:shadow-md text-slate-900 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 md:bg-slate-100 md:dark:bg-slate-800"
+            className="p-2 rounded-full transition-colors md:ml-auto bg-slate-100 dark:bg-slate-800 shadow-sm dark:shadow-md text-slate-900 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 active:bg-slate-200 dark:active:bg-slate-700"
             aria-label="Toggle theme"
           >
             <AnimatePresence mode="wait">
@@ -130,7 +130,7 @@ export default function Navbar() {
                       href={item.path}
                       onClick={() => setIsOpen(false)}
                       className={clsx(
-                        "block px-8 py-4 transition-colors border-l-4",
+                        "block px-8 py-4 transition-all border-l-4 active:bg-slate-100 dark:active:bg-slate-800",
                         pathname === item.path
                           ? "text-primary border-primary bg-slate-50 dark:bg-slate-800/50"
                           : "text-slate-600 dark:text-slate-400 border-transparent hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800/30"

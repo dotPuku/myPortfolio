@@ -103,7 +103,7 @@ export default function SkillsPage() {
             whileHover={{ scale: 1.1, y: -5, rotate: -2 }}
             whileTap={{ scale: 0.9 }}
             key={tool.name}
-            className="w-16 h-16 bg-slate-50 dark:bg-[#0f172a] rounded-xl flex items-center justify-center p-3 border border-slate-200 dark:border-slate-700/50 hover:border-primary dark:hover:border-primary transition-all shadow-sm cursor-pointer"
+            className="w-16 h-16 bg-slate-50 dark:bg-[#0f172a] rounded-xl flex items-center justify-center p-3 border border-slate-200 dark:border-slate-700/50 hover:border-primary dark:hover:border-primary active:border-primary transition-all shadow-sm cursor-pointer"
             title={tool.name}
           >
             <div

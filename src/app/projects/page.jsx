@@ -43,6 +43,7 @@ export default function ProjectsPage() {
         {data.projects.map((project) => (
           <motion.div
             variants={item}
+            whileTap={{ scale: 0.98 }}
             key={project.id}
             className="bg-slate-50 dark:bg-[#0f172a] rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 group hover:border-primary dark:hover:border-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/10"
           >
@@ -51,7 +52,8 @@ export default function ProjectsPage() {
                 <FolderGit2 size={48} className="opacity-40 group-hover:opacity-70 group-hover:scale-110 transition-all duration-300" />
               </div>
 
-              <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              {/* Action Buttons - Visible on Mobile, Hover on Desktop */}
+              <div className="absolute top-3 right-3 flex gap-2 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                 {project.liveUrl && (
                   <motion.a
                     whileHover={{ scale: 1.1 }}

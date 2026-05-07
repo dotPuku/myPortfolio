@@ -42,16 +42,30 @@ export default function EducationPage() {
         {data.timeline.map((edu, index) => (
           <motion.div 
             variants={item}
+            whileHover="hover"
+            whileTap="tap"
             key={index} 
-            className="mb-10 ml-8 relative group"
+            className="mb-10 ml-8 relative cursor-pointer"
           >
             <motion.div 
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: index * 0.15 + 0.3 }}
-              className="absolute -left-10 mt-1.5 w-4 h-4 rounded-full bg-primary shadow-[0_0_0_4px_#ffffff] dark:shadow-[0_0_0_4px_#1e293b] transition-all duration-300 group-hover:scale-125"
+              variants={{
+                initial: { scale: 1 },
+                hover: { scale: 1.25 },
+                tap: { scale: 0.9 }
+              }}
+              initial="initial"
+              className="absolute -left-10 mt-1.5 w-4 h-4 rounded-full bg-primary shadow-[0_0_0_4px_#ffffff] dark:shadow-[0_0_0_4px_#1e293b] transition-all duration-300"
             ></motion.div>
-            <div className="text-primary text-sm font-bold mb-2 tracking-wider group-hover:translate-x-1 transition-transform duration-300">{edu.year}</div>
+            <motion.div 
+              variants={{
+                initial: { x: 0 },
+                hover: { x: 4 },
+                tap: { x: 0 }
+              }}
+              className="text-primary text-sm font-bold mb-2 tracking-wider transition-transform duration-300"
+            >
+              {edu.year}
+            </motion.div>
             <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1 transition-colors duration-300 uppercase">{edu.degree}</h3>
             <p className="text-slate-600 dark:text-slate-400 transition-colors duration-300">{edu.institution}</p>
           </motion.div>

@@ -44,8 +44,23 @@ export default function AboutPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {Object.entries(data.details).map(([key, value]) => (
-          <motion.div variants={item} key={key} className="flex gap-2 group">
-            <span className="font-semibold text-primary w-24 group-hover:translate-x-1 transition-transform duration-200">{key}:</span>
+          <motion.div 
+            variants={item} 
+            whileHover="hover"
+            whileTap="tap"
+            key={key} 
+            className="flex gap-2 cursor-default"
+          >
+            <motion.span 
+              variants={{
+                initial: { x: 0 },
+                hover: { x: 4 },
+                tap: { x: 0 }
+              }}
+              className="font-semibold text-primary w-24 transition-transform duration-200"
+            >
+              {key}:
+            </motion.span>
             <span className="text-slate-900 dark:text-white transition-colors duration-300">{String(value)}</span>
           </motion.div>
         ))}

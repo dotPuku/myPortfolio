@@ -87,20 +87,33 @@ export default function Sidebar() {
 
       {/* Download CV */}
       <motion.a
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
         href="https://drive.google.com/file/d/1dBL2NDR5gUFJYuTExWkz37LUoFem7miX/view"
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative inline-flex items-center gap-3 px-8 py-3.5 rounded-full font-bold text-sm tracking-widest overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/30 bg-primary hover:bg-black dark:bg-primary dark:hover:bg-white dark:hover:text-slate-900 text-white"
+        className="group relative inline-flex items-center gap-3 px-8 py-3.5 rounded-full font-bold text-sm tracking-widest overflow-hidden transition-all duration-300 shadow-lg shadow-black/5 bg-primary text-white hover:bg-black dark:hover:bg-white dark:hover:text-slate-900 active:bg-black dark:active:bg-white dark:active:text-slate-900"
       >
         {/* Shimmer overlay */}
-        <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
-        {/* Icon */}
-        <span className="flex items-center justify-center w-7 h-7 bg-white/20 rounded-full shrink-0 group-hover:bg-white/30 transition-colors">
+        <motion.span 
+          variants={{
+            initial: { x: "-100%" },
+            hover: { x: "100%" },
+            tap: { x: "100%" }
+          }}
+          initial="initial"
+          whileHover="hover"
+          whileTap="tap"
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none" 
+        />
+        
+        {/* Icon Container */}
+        <span className="flex items-center justify-center w-7 h-7 bg-white/20 rounded-full shrink-0 group-hover:bg-white/30 group-active:bg-white/30 transition-colors">
           <Download size={14} strokeWidth={2.5} />
         </span>
-        RESUME
+        
+        <span className="relative z-10">RESUME</span>
       </motion.a>
     </motion.aside>
   );
@@ -109,12 +122,20 @@ export default function Sidebar() {
 function ContactItem({ icon, label, value }) {
   return (
     <motion.div
-      whileHover={{ x: 5 }}
-      className="flex items-center gap-4 group"
+      whileHover="hover"
+      whileTap="tap"
+      className="flex items-center gap-4 cursor-pointer"
     >
-      <div className="w-12 h-12 shrink-0 bg-slate-100 dark:bg-slate-800/80 text-primary rounded-xl flex items-center justify-center shadow-sm border border-slate-200 dark:border-slate-700/50 group-hover:border-primary transition-all duration-300">
+      <motion.div 
+        variants={{
+          initial: { borderColor: "transparent", scale: 1 },
+          hover: { borderColor: "var(--primary)", scale: 1.05 },
+          tap: { scale: 0.95 }
+        }}
+        className="w-12 h-12 shrink-0 bg-slate-100 dark:bg-slate-800/80 text-primary rounded-xl flex items-center justify-center shadow-sm border transition-all duration-300"
+      >
         {icon}
-      </div>
+      </motion.div>
       <div className="flex flex-col">
         <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-1 transition-colors duration-300">{label}</span>
         <span className="text-sm font-medium text-slate-900 dark:text-white transition-colors duration-300 break-all">{value}</span>

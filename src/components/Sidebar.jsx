@@ -78,10 +78,17 @@ export default function Sidebar() {
         <div className="h-px bg-slate-200 dark:bg-slate-700 w-full mb-6 transition-colors duration-300"></div>
 
         {/* Contact Info */}
-        <div className="flex flex-col gap-6">
-          <ContactItem icon={<Phone size={20} />} label="Phone" value="+91 8697529062" />
-          <ContactItem icon={<Mail size={20} />} label="Email" value="dotpuku@gmail.com" />
-          <ContactItem icon={<MapPin size={20} />} label="Location" value="North 24 Pgs, WB, India" />
+        <div className="flex flex-col gap-4">
+          <ContactItem 
+            icon={<Mail size={18} />} 
+            label="Email" 
+            value="dotpuku@gmail.com" 
+          />
+          <ContactItem 
+            icon={<MapPin size={18} />} 
+            label="Location" 
+            value="North 24 Pgs, WB, India" 
+          />
         </div>
       </div>
 
@@ -121,25 +128,19 @@ export default function Sidebar() {
 
 function ContactItem({ icon, label, value }) {
   return (
-    <motion.div
-      whileHover="hover"
-      whileTap="tap"
-      className="flex items-center gap-4 cursor-pointer"
-    >
-      <motion.div 
-        variants={{
-          initial: { borderColor: "transparent", scale: 1 },
-          hover: { borderColor: "var(--primary)", scale: 1.05 },
-          tap: { scale: 0.95 }
-        }}
-        className="w-12 h-12 shrink-0 bg-slate-100 dark:bg-slate-800/80 text-primary rounded-xl flex items-center justify-center shadow-sm border transition-all duration-300"
-      >
+    <div className="flex items-center gap-3 p-3 rounded-2xl border border-slate-900/20 dark:border-white/10 bg-slate-50/50 dark:bg-slate-800/40 transition-colors duration-300">
+      <div className="shrink-0 text-slate-900/60 dark:text-white/40">
         {icon}
-      </motion.div>
-      <div className="flex flex-col">
-        <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-1 transition-colors duration-300">{label}</span>
-        <span className="text-sm font-medium text-slate-900 dark:text-white transition-colors duration-300 break-all">{value}</span>
       </div>
-    </motion.div>
+
+      <div className="w-px h-8 bg-slate-900/10 dark:bg-white/10"></div>
+
+      <div className="flex flex-col min-w-0">
+        <span className="text-[10px] font-bold text-slate-900/60 dark:text-white/40 uppercase tracking-widest mb-0.5">{label}</span>
+        <span className="text-sm font-semibold truncate text-slate-900/60 dark:text-white/40">
+          {value}
+        </span>
+      </div>
+    </div>
   );
 }

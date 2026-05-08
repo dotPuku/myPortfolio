@@ -81,6 +81,31 @@ export default function ProjectsPage() {
             <div className="p-6">
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 transition-colors duration-300 group-hover:text-primary uppercase">{project.title}</h3>
               <p className="text-slate-600 dark:text-slate-400 text-sm line-clamp-2 transition-colors duration-300">{project.description}</p>
+              
+              {/* Skills Tags */}
+              {project.skills && (
+                <div className="mt-3 flex flex-wrap items-center gap-x-1.5">
+                  {project.skills.split(',').map((skill, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center"
+                    >
+                      <span
+                        className={`text-[11px] font-bold lowercase tracking-tight ${
+                          index % 2 === 0 
+                            ? "text-blue-600 dark:text-rose-400" 
+                            : "text-rose-600 dark:text-blue-400"
+                        }`}
+                      >
+                        #{skill.trim()}
+                      </span>
+                      {index < project.skills.split(',').length - 1 && (
+                        <span className="text-slate-400 dark:text-slate-600 text-[10px] ml-0.5">,</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </motion.div>
         ))}
